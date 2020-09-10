@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-	rofi -show drun
+	rofi -modi "run,drun" -show drun -icon-theme "Papirus" -show-icons
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -64,7 +64,7 @@ super + {p,b,comma,period}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}.local
+	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -90,6 +90,10 @@ super + {_,shift + }{1-9,0}
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the direction
+super + ctrl + {left,down,up,right}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
@@ -119,3 +123,17 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# volume control
+XF86AudioLowerVolume
+	amixer set Master 5%-
+XF86AudioRaiseVolume
+	amixer set Master 5%+
+XF86AudioMute
+        amixer set Master toggle
+
+# brightness control
+XF86MonBrightnessDown
+	brightnessctl set 10%-	
+XF86MonBrightnessUp
+	brightnessctl set +10%
