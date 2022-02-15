@@ -20,8 +20,11 @@ Plug 'junegunn/fzf.vim'
 " Buffer (tab-like) switcher (not vim-tabs)
 Plug 'ap/vim-buftabline'
 
+" show selected line
+Plug 'yamatsum/nvim-cursorline'
+
 " Cool Vim theme
-Plug 'liuchengxu/space-vim-dark'
+Plug 'sickill/vim-monokai'
 
 call plug#end()
 
@@ -44,13 +47,16 @@ set number
 set title
 set mouse=a
 
+set clipboard+=unnamedplus
+
 set completeopt=menu,menuone,noselect
 " set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 syntax on
+colorscheme monokai
 set signcolumn=number
-color space-vim-dark 
+
 " Make bg transparent
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
